@@ -302,21 +302,17 @@ do
                 }
                 ourAnimals[i, 2] = "Age: " + animalAge;
 
-                animalPhysicalDescription = ourAnimals[i, 4]
-                    .Substring("Physical description: ".Length);
+                animalPhysicalDescription = ourAnimals[i, 4].Substring("Physical description: ".Length);
 
                 while (string.IsNullOrWhiteSpace(animalPhysicalDescription)
                     || animalPhysicalDescription.Trim().ToLower() == "tbd")
                 {
-                    Console.WriteLine(
-                        "Enter a physical description for " + ourAnimals[i, 0]
-                        + " (size, color, breed, gender, weight, housebroken)");
+                    Console.WriteLine("Enter a physical description for " + ourAnimals[i, 0] + " (size, color, breed, gender, weight, housebroken)");
 
                     animalPhysicalDescription = Console.ReadLine() ?? "";
                 }
 
-                ourAnimals[i, 4] =
-                    "Physical description: " + animalPhysicalDescription;
+                ourAnimals[i, 4] = "Physical description: " + animalPhysicalDescription;
             }
 
             Console.WriteLine("Age and physical description fields are complete for all of our friends.");
@@ -332,8 +328,22 @@ do
                 {
                     continue;
                 }
-                
+                animalNickname = ourAnimals[i,3].Substring("Nickname: ".Length);
+                while (string.IsNullOrWhiteSpace(animalNickname))
+                {
+                    Console.WriteLine("Enter a nickname for " + ourAnimals[i,0]);
+                    animalNickname = Console.ReadLine() ?? "";
+                }
+                ourAnimals[i,3] = "Nickname: " + animalNickname;
+                animalPersonalityDescription = ourAnimals[i,5].Substring("Personality: ".Length);
+                while (string.IsNullOrWhiteSpace(animalPersonalityDescription))
+                {
+                    Console.WriteLine("Enter a personality description for" + ourAnimals[i,0] + "(likes or dislikes, tricks, energy level)");
+                    animalPersonalityDescription = Console.ReadLine() ?? "";
+                }
+                ourAnimals[i,5] = "Personality: " + animalPersonalityDescription;
             }
+            Console.WriteLine("Nickname and personality description fields are complete for all of our friends.");
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
